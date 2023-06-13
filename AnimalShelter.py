@@ -27,12 +27,12 @@ class AnimalShelter(object):
         self.collection = self.database['%s' % (COL)]
 
     def create(self, data):
+        data = input("What collection would you like to create? Be sure to use MongoDB syntax")
         # Checks to see if the data is null or empty and returns false in either case
-        if data is not None:
-            if data:
-                self.database.animals.insert_one(data)
-                print("Create Complete!")
-                return True
+        if data is None:
+            self.database.animals.insert_one(data)
+            print("Create Complete!")
+            return True
         else:
             return False
 
