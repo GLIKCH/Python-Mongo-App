@@ -110,3 +110,9 @@ for collection_name in collection_group_name:
 ##
 
 We hope this project is beneficial for all developers looking to develop a python application with MongoDB database.
+
+
+## Here is an image on the example utilized to manage CRUD functions and make updates to the MongoDB server database.
+
+![image](https://github.com/GLIKCH/Python-Mongo-App/assets/53536316/f4c8b9b1-c963-48ce-9175-2b3baa670256)
+
