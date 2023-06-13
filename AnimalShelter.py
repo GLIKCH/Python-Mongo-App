@@ -57,6 +57,7 @@ class AnimalShelter(object):
             updRequest = input("Entry not found, Would you like to create a new collection? Y / N ---- " + display)
             if updRequest is "y" or "Y":
                 self.database.animals.insert_one(modify)
+                print("Updated Successfully!")
             if updRequest is "n" or "N":
                 print("No update was made.")
 
