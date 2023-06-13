@@ -53,7 +53,7 @@ This type of command runs on basic bash from Linux terminal.
 
 ## Script Implementation
 
-The script was created utilizing PyCharm and Jupyter Notebook. The main script handles the CRUD  commands to input and edit collections within the database, while the AnimalShelter.ipynb handles the authentication and connection to the MongoDB server.
+The script was created utilizing PyCharm and Jupyter Notebook. The main script handles the commands to input and edit collections within the database from the AnimalShelter.py of which handles the authentication and connection to the MongoDB server. All of the CRUD functions are developed within the AnimalShelter.py.
 
 The class begins as follows:
 
@@ -110,3 +110,10 @@ for collection_name in collection_group_name:
 ##
 
 We hope this project is beneficial for all developers looking to develop a python application with MongoDB database.
+
+
+Here is an image on the example utilized to manage CRUD functions and make updates to the MongoDB server database.
+##
+
+![image](https://github.com/GLIKCH/Python-Mongo-App/assets/53536316/f4c8b9b1-c963-48ce-9175-2b3baa670256)
+
