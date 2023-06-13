@@ -2,6 +2,7 @@
 # Southern New Hampshire University
 # 06/30/23
 # Professor Dr. Tad Kellog
+
 import sys
 
 # Importing the Animal Shelter Python Script
