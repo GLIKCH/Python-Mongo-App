@@ -48,12 +48,24 @@ class AnimalShelter(object):
             return exception
 
     def update(self, modify):
+        display = modify
         # Checks if data is present, if not then updates the collection
         if modify is not None:
             self.database.animals.update_one(modify)
             print("Updated Successfully!")
+        else:
+            updRequest = input("Entry not found, Would you like to create a new collection? Y / N ---- " + display)
+            if updRequest is "y" or "Y":
+                self.database.animals.insert_one(modify)
+            if updRequest is "n" or "N":
+                print("No update was made.")
+
 
     def delete(self, remove):
         # Checks if entry exists, if not then deletes found collection
         if remove is not None:
             self.database.animals.delete(remove)
+            print("Deleted Successfully!")
+        else:
+            exception = "No Entry Found!"
+            return exception
