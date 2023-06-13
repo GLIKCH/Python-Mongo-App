@@ -3,6 +3,7 @@
 # 06/30/23
 # Professor Dr. Tad Kellog
 
+# Sys import for closing app
 import sys
 
 # Importing the Animal Shelter Python Script
@@ -15,7 +16,7 @@ c = AnimalShelter.create()
 u = AnimalShelter.update()
 d = AnimalShelter.delete()
 
-
+# Function that initiates functionality information
 def initInfo():
     print("Welcome to Global Rain CRUD Management Application\n"
           "This application will sample an AnimalShelter database to educate\n"

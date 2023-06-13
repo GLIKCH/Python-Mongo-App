@@ -3,12 +3,15 @@
 # 06/30/23
 # Professor Dr. Tad Kellog
 
+# Importing Script Main
 import Script
 scr = Script
+
 # Importing Mongo Client
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
+# Animal Shelter Class init connects to MongoDB database
 class AnimalShelter(object):
     """ CRUD operations for Animal collection in MongoDB """
 
@@ -28,6 +31,7 @@ class AnimalShelter(object):
         self.database = self.client['%s' % (DB)]
         self.collection = self.database['%s' % (COL)]
 
+# Read function called with 1
     def read(self, search):
         search = input("Search Query: ")
         # Checks to see if the data is null or empty and returns exception in either case
@@ -40,17 +44,19 @@ class AnimalShelter(object):
             print("Nothing to search, because search parameter is empty")
             return scr
 
+# Create function called with 2
     def create(self, data):
         data = input("What collection would you like to create? Be sure to use MongoDB syntax\n --| ")
         # Checks to see if the data is null or empty and returns false in either case
-        if data is None:
+        if data is not None:
+            print("Error: Field Occupied")
+            return scr
+        else:
             self.database.animals.insert_one(data)
             print("Created Successfully!")
             return scr
-        else:
-            print("Error: Not Created")
-            return scr
 
+# Update function called with 3
     def update(self, modify):
         modify = input("What collection would you like to update?\n --|")
         # Checks if data is present, if not then updates the collection
@@ -68,6 +74,7 @@ class AnimalShelter(object):
                 print("No collection was created.")
                 return scr
 
+# Delete function called by 4
     def delete(self, remove):
         remove = input("What collection would you like to delete? \n--| ")
         if remove is not None:
