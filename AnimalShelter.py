@@ -3,84 +3,62 @@
 # 06/30/23
 # Professor Dr. Tad Kellog
 
-# Importing Script Main
-import Script
-scr = Script
-
 # Importing Mongo Client
 from pymongo import MongoClient
+
+# Other necessary inputs
 from bson.objectid import ObjectId
+from bson.json_util import dumps
+from ipywidgets import IntSlider
+from ipywidgets.embed import embed_minimal_html
+from bson.objectid import ObjectId
+import json
 
-# Animal Shelter Class init connects to MongoDB database
+
+slider = IntSlider(value=40)
+embed_minimal_html('export.html', views=[slider], title='Widgets export')
+
+# Client Linking
+client=MongoClient('mongodb://localhost:30122')
+animal_data=client.AAC.animals.find({})
+
+# AnimalShelter Class
 class AnimalShelter(object):
-    """ CRUD operations for Animal collection in MongoDB """
 
-    def __init__(self):
-        # Initializing the MongoClient. This helps to
-        # access the MongoDB databases and collections.
-        USER = 'aacuser'
-        PASS = 'SNHU1234'
-        HOST = 'nv-desktop-services.apporto.com'
-        PORT = 30122
-        DB = 'AAC'
-        COL = 'animals'
+    def __init__ (self, username, password):
+        self.client = MongoClient('mongodb://%s:%s@127.0.0.1:30122/AAC' %(username, password))
+        self.database = self.client['AAC']
 
-        # Initialize Connection
-        #
-        self.client = MongoClient('mongodb://%s:%s@%s:%d' % (USER, PASS, HOST, PORT))
-        self.database = self.client['%s' % (DB)]
-        self.collection = self.database['%s' % (COL)]
+    # Basic CRUD - Create Implementation
+    def create (self, data):
+        if data is not None:
+            self.database.animals.insert_one(data)
+            return True
+        else: raise Exception("Nothing to save: data empty")
 
-# Read function called with 1
+    # Basic CRUD - Read Implementation
     def read(self, search):
-        search = input("Search Query: ")
-        # Checks to see if the data is null or empty and returns exception in either case
         if search is not None:
             if search:
                 searchResult = self.database.animals.find(search)
-                print("Search was Successful!")
                 return searchResult
         else:
-            print("Nothing to search, because search parameter is empty")
-            return scr
+            exception = "Nothing to search, because search parameter is empty"
+            return exception
 
-# Create function called with 2
-    def create(self, data):
-        data = input("What collection would you like to create? Be sure to use MongoDB syntax\n --| ")
-        # Checks to see if the data is null or empty and returns false in either case
-        if data is not None:
-            print("Error: Field Occupied")
-            return scr
-        else:
-            self.database.animals.insert_one(data)
-            print("Created Successfully!")
-            return scr
+    # Basic CRUD - Update Implementation
+    def update(self, save):
+        if save is not None:
+            if save:
+                saveResult = self.database.animals.insert_one(save)
+                return saveResult
+            else:
+                exception = "Error: Nothing to Update"
 
-# Update function called with 3
-    def update(self, modify):
-        modify = input("What collection would you like to update?\n --|")
-        # Checks if data is present, if not then updates the collection
-        if modify is not None:
-            self.database.animals.update_one(modify)
-            print("Updated Successfully!")
-            return scr
-        else:
-            updRequest = input("Entry not found, Would you like to create a new collection? Y / N ---- " + modify + "\n\n--| ")
-            if updRequest is "y" or "Y":
-                self.database.animals.insert_one(modify)
-                print("Created Successfully!")
-                return scr
-            if updRequest is "n" or "N":
-                print("No collection was created.")
-                return scr
-
-# Delete function called by 4
+    # Basic CRUD - Delete Implementation
     def delete(self, remove):
-        remove = input("What collection would you like to delete? \n--| ")
         if remove is not None:
-            self.database.animals.delete(remove)
-            print("Deleted Successfully!")
-            return scr
-        else:
-            print("No Entry Found!")
-            return scr
+            if remove:
+                removeResult = self.database.animals.delete_one(remove)
+            else:
+                exception: "Error: Nothing to Delete"
