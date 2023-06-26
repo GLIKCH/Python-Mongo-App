@@ -115,5 +115,17 @@ We hope this project is beneficial for all developers looking to develop a pytho
 Here is an image on the example utilized to manage CRUD functions and make updates to the MongoDB server database.
 ##
 
-![image](https://github.com/GLIKCH/Python-Mongo-App/assets/53536316/f4c8b9b1-c963-48ce-9175-2b3baa670256)
+![image](https://github.com/GLIKCH/Python-Mongo-App/assets/53536316/f4c8b9b1-c963-48ce-9175-2b3baa670256)'
+
+##
+
+# Additional Final Module Edits
+##
+
+How do you write programs that are maintainable, readable, and adaptable? Especially consider your work on the CRUD Python module from Project One, which you used to connect the dashboard widgets to the database in Project Two. What were the advantages of working in this way? How else could you use this CRUD Python module in the future?
+
+Maintainable, Readable, and Adaptable programs are implemented by understanding first and foremost the functionality, the syntax, the database connections made such as username, password, port, host, etc. Secondly once the terminology, syntax, and prerequizites are covered in regards to database document handling, import, and detection of the database table by query into mongosh for MongoDB database the rest of the development process relies on implementing code that is clear of developer errors or more so know as syntax errors so that the queries can be utilized as intended. Each individual query text or command has its uses, for example we can use .find(), .findOne(), etc, to find documents withing a database, .update() is utuilized with generally two enrtries as the new entry is provided as well as the old entry that will eventually be replaced. The .delete() function or .deleteMany() comands are used to delete quries one or many documents. The .create() likewise as the name suggests, creates new document entried to the collectiona and database. Utilizing and understanding these commands can help implement any kind of user interface as long as the language or framework in question supports MongoDB. MongoDB however, is not the only database as there are a wide variety of database software that allow the end user and developers to use CRUD and further edit databases. Wether we like to or not 
+How do you approach a problem as a computer scientist? Consider how you approached the database or dashboard requirements that Grazioso Salvare requested. How did your approach to this project differ from previous assignments in other courses? What techniques or strategies would you use in the future to create databases to meet other client requests?
+What do computer scientists do, and why does it matter? How would your work on this type of project help a company, like Grazioso Salvare, to do their work better?
+
 
